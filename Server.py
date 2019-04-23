@@ -9,3 +9,7 @@
 #     if modifiedMessasge:
 #         print(modifiedMessasge+" from %s port %s"%clientAddress)
 #     serverSocket.sendto(modifiedMessasge.encode(),clientAddress)
+
+from os import listdir
+from os.path import isfile, join
+onlyfiles = [f for f in listdir('.') if isfile(join('.', f))]
