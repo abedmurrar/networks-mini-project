@@ -14,12 +14,13 @@ while True:
     modifiedMessasge = message.decode()
     print(modifiedMessasge+" from %s port %s"%clientAddress) # debug
     if modifiedMessasge == 'ls':
-        serverSocket.sendto(str(onlyfiles),clientAddress)
+        serverSocket.sendto(str(onlyfiles).encode(),clientAddress)
     elif modifiedMessasge in onlyfiles:
         data=''
         with open('./files/'+modifiedMessasge, 'r') as file:
             data = file.read()
-        serverSocket.sendto(data,clientAddress)
+        serverSocket.sendto(data.encode(),clientAddress)
     else:
-        serverSocket.sendto("Incorrect command",clientAddress)
+        serverSocket.sendto("Incorrect command".encode(),clientAddress)
 
+    modifiedMessasge = message
